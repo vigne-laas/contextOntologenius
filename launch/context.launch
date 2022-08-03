@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find ontologenius)/launch/ontologenius_full.launch">
+        <arg name="display" value="false"/>
+        <arg name="intern_file" value="none"/>
+        <arg name="config_file" value="$(find context-package)/configs/ontologenius_config.yaml"/>
+        <arg name="files" value="$(find dt_resources)/ontologies/common_ground.owl
+                                $(find dt_resources)/ontologies/HTNDescription.owl
+                                $(find context-package)/ontologies/Context.owl"/>
+    </include>
+</launch>

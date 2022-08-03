@@ -1,0 +1,9 @@
+flow:
+  - ReasonerChain
+  - ReasonerDictionary
+  - ReasonerInverseOf
+  - ReasonerRangeDomain
+  - ReasonerSymetric
+  # - ReasonerContext
+ReasonerDictionary:
+  use_id : true

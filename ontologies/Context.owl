@@ -1,0 +1,751 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="Context#"
+     xml:base="Context"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontologies="https://github.com/LAAS-HRI/exp_director_task/blob/master/dt_resources/ontologies/"
+     xmlns:common_ground="common_ground#"
+     xmlns:untitled-ontology-6="Context#">
+    <owl:Ontology rdf:about="Context">
+        <owl:imports rdf:resource="common_ground"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- Context#activityContextHasActivity -->
+
+    <owl:ObjectProperty rdf:about="Context#activityContextHasActivity">
+        <owl:inverseOf rdf:resource="Context#activityPerformInActivityContext"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="Context#ActivityContext"/>
+        <rdfs:range rdf:resource="common_ground#Activity"/>
+    </owl:ObjectProperty>
+    
+    <!-- Context#activityPerformInActivityContext -->
+
+    <owl:ObjectProperty rdf:about="Context#activityPerformInActivityContext">
+        <owl:inverseOf rdf:resource="Context#activityContextHasActivity"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="Context#ActivityContext"/>
+        <rdfs:domain rdf:resource="common_ground#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#activityContextHasActivityGoal -->
+
+    <owl:ObjectProperty rdf:about="Context#activityContextHasActivityGoal">
+        <rdf:inverseOf rdf:resource="Context#isActivityGoalOfActivityContext"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="Context#ActivityContext"/>
+        <rdfs:range rdf:resource="common_ground#ActivityGoal"/>
+    </owl:ObjectProperty>
+
+        <!-- Context#isActivityGoalOfActivityContext -->
+
+    <owl:ObjectProperty rdf:about="Context#isActivityGoalOfActivityContext">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdf:inverseOf rdf:resource="Context#activityContextHasActivityGoal"/>
+        <rdfs:range rdf:resource="Context#ActivityContext"/>
+        <rdfs:domain rdf:resource="common_ground#ActivityGoal"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#activityIsPerformInLocation -->
+
+    <owl:ObjectProperty rdf:about="Context#activityIsPerformInLocation">
+        
+        <owl:inverseOf rdf:resource="Context#locationSupportActivity"/>
+        <rdfs:domain rdf:resource="common_ground#Activity"/>
+        <rdfs:range rdf:resource="common_ground#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#activityUseAgent -->
+
+    <owl:ObjectProperty rdf:about="Context#activityUseAgent">
+        <rdfs:subPropertyOf rdf:resource="Context#activityuseEntity"/>
+        <rdfs:range rdf:resource="common_ground#Agent"/>
+    </owl:ObjectProperty>
+    
+    <!-- Context#agentIsUseInActivity -->
+
+    <owl:ObjectProperty rdf:about="Context#agentIsUseInActivity">
+        <owl:inverseOf rdf:resource="Context#activityUseAgent"/>
+        <rdfs:subPropertyOf rdf:resource="Context#entityIsUseInActivity"/>
+        <rdfs:domain rdf:resource="common_ground#Agent"/>
+    </owl:ObjectProperty>
+
+    <!-- Context#activityUseObject -->
+
+    <owl:ObjectProperty rdf:about="Context#activityUseObject">
+        <rdfs:subPropertyOf rdf:resource="Context#activityuseEntity"/>
+        <rdfs:range rdf:resource="common_ground#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#activityuseEntity -->
+
+    <owl:ObjectProperty rdf:about="Context#activityuseEntity">
+        <rdfs:domain rdf:resource="common_ground#Activity"/>
+        <rdfs:range rdf:resource="common_ground#Entity"/>
+    </owl:ObjectProperty>
+
+    <!-- Context#entityIsUseInActivity -->
+
+    <owl:ObjectProperty rdf:about="Context#entityIsUseInActivity">
+        <owl:inverseOf rdf:resource="Context#activityuseEntity"/>
+        <rdfs:range rdf:resource="common_ground#Activity"/>
+        <rdfs:domain rdf:resource="common_ground#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#agentPlayRole -->
+
+    <owl:ObjectProperty rdf:about="Context#agentPlayRole">
+        <owl:inverseOf rdf:resource="Context#rolePlayedByAgent"/>
+        <rdfs:domain rdf:resource="common_ground#Agent"/>
+        <rdfs:range rdf:resource="common_ground#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningHasEntity -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningHasEntity">
+        <rdfs:domain rdf:resource="common_ground#ContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningHasLocation -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningHasLocation">
+        <rdfs:subPropertyOf rdf:resource="Context#contextMeaningHasEntity"/>
+        <owl:inverseOf rdf:resource="Context#locationHasLocationContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#LocationContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningHasObject -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningHasObject">
+        <rdfs:subPropertyOf rdf:resource="Context#contextMeaningHasEntity"/>
+        <owl:inverseOf rdf:resource="Context#objectHasObjectContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#ObjectContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningHasRole -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningHasRole">
+        <rdfs:subPropertyOf rdf:resource="Context#contextMeaningHasEntity"/>
+        <owl:inverseOf rdf:resource="Context#roleHasRoleContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#RoleContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningIsBasedOnThisContext -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningIsBasedOnThisContext">
+        
+        <owl:inverseOf rdf:resource="Context#contextUseContextMeaning"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="common_ground#ContextMeaning"/>
+        <rdfs:range rdf:resource="Context#Context"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningSymboliseEntities -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningSymboliseEntities">
+        
+        <owl:inverseOf rdf:resource="Context#useAsSymbolInContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#ContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningSymboliseLocation -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningSymboliseLocation">
+        <rdfs:subPropertyOf rdf:resource="Context#contextMeaningSymboliseEntities"/>
+        <rdfs:domain rdf:resource="common_ground#LocationContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningSymboliseObject -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningSymboliseObject">
+        <rdfs:subPropertyOf rdf:resource="Context#contextMeaningSymboliseEntities"/>
+        <rdfs:domain rdf:resource="common_ground#ObjectContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextMeaningSymboliseRole -->
+
+    <owl:ObjectProperty rdf:about="Context#contextMeaningSymboliseRole">
+        <rdfs:subPropertyOf rdf:resource="Context#contextMeaningSymboliseEntities"/>
+        <rdfs:domain rdf:resource="common_ground#RoleContextMeaning"/>
+        <rdfs:range rdf:resource="common_ground#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#contextUseContextMeaning -->
+
+    <owl:ObjectProperty rdf:about="Context#contextUseContextMeaning">
+        
+        <rdfs:domain rdf:resource="Context#Context"/>
+        <rdfs:range rdf:resource="common_ground#ContextMeaning"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#entityHasContextMeaning -->
+
+    <owl:ObjectProperty rdf:about="Context#entityHasContextMeaning">
+        
+        <rdfs:domain rdf:resource="common_ground#Entity"/>
+        <rdfs:range rdf:resource="common_ground#ContextMeaning"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#environnementContextInvolveAgents -->
+
+    <owl:ObjectProperty rdf:about="Context#environnementContextInvolveAgents">
+        <owl:inverseOf rdf:resource="Context#agentIsInEnvironnementContext"/>
+        <rdfs:subPropertyOf rdf:resource="Context#environnementContextInvolveEntities"/>
+        <rdfs:range rdf:resource="common_ground#Agent"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="common_ground#environnementContextTakePlaceInLocation"/>
+            <rdf:Description rdf:about="common_ground#hasIn"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+    <!-- Context#agentIsInEnvironnementContext -->
+
+    <owl:ObjectProperty rdf:about="Context#agentIsInEnvironnementContext">
+        <owl:inverseOf rdf:resource="Context#environnementContextInvolveAgents"/>
+        <rdfs:subPropertyOf rdf:resource="Context#entitieIsInEnvironnementContext"/>
+        <rdfs:domain rdf:resource="common_ground#Agent"/>
+    </owl:ObjectProperty>
+
+
+    <!-- Context#environnementContextInvolveEntities -->
+
+    <owl:ObjectProperty rdf:about="Context#environnementContextInvolveEntities">
+        
+        <rdfs:domain rdf:resource="Context#EnvironnementalContext"/>
+        <rdfs:range rdf:resource="common_ground#PhysicalEntity"/>
+    </owl:ObjectProperty>
+    
+    <!-- Context#entitieIsInEnvironnementContext -->
+
+    <owl:ObjectProperty rdf:about="Context#entitieIsInEnvironnementContext">
+        <owl:inverseOf rdf:resource="Context#environnementContextInvolveEntities"/>
+        <rdfs:range rdf:resource="Context#EnvironnementalContext"/>
+        <rdfs:domain rdf:resource="common_ground#PhysicalEntity"/>
+    </owl:ObjectProperty>
+
+
+    <!-- Context#environnementContextInvolveObjects -->
+
+    <owl:ObjectProperty rdf:about="Context#environnementContextInvolveObjects">
+        <owl:inverseOf rdf:resource="Context#objectIsInEnvironnementContext"/>
+        <rdfs:subPropertyOf rdf:resource="Context#environnementContextInvolveEntities"/>
+        <rdfs:range rdf:resource="common_ground#Object"/>
+    </owl:ObjectProperty>
+
+    <!-- Context#objectIsInEnvironnementContext -->
+
+    <owl:ObjectProperty rdf:about="Context#objectIsInEnvironnementContext">
+        <owl:inverseOf rdf:resource="Context#environnementContextInvolveObjects"/>
+        <rdfs:subPropertyOf rdf:resource="Context#entitieIsInEnvironnementContext"/>
+        <rdfs:domain rdf:resource="common_ground#Object"/>
+    </owl:ObjectProperty>
+ 
+
+    <!-- Context#environnementContextTakePlaceInLocation -->
+
+    <owl:ObjectProperty rdf:about="Context#environnementContextTakePlaceInLocation">
+        <owl:inverseOf rdf:resource="Context#locationsupportEnvironnementLocation"/>
+        <rdfs:domain rdf:resource="Context#EnvironnementalContext"/>
+        <rdfs:range rdf:resource="common_ground#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#globalContextIsComposeOfActivityContext -->
+
+    <owl:ObjectProperty rdf:about="Context#globalContextIsComposeOfActivityContext">
+        <rdfs:subPropertyOf rdf:resource="Context#globalContextIsComposeOfContext"/>
+        <rdfs:range rdf:resource="Context#ActivityContext"/>
+    </owl:ObjectProperty>
+
+    <!-- Context#globalContextIsComposeOfContext -->
+
+    <owl:ObjectProperty rdf:about="Context#globalContextIsComposeOfContext">
+        <owl:inverseOf rdf:resource="Context#contextIsPartOfGlobalContext"/>
+        <rdfs:domain rdf:resource="Context#GlobalContext"/>
+        <rdfs:range rdf:resource="Context#Context"/>
+    </owl:ObjectProperty>
+
+    <!-- Context#contextIsPartOfGlobalContext -->
+
+    <owl:ObjectProperty rdf:about="Context#contextIsPartOfGlobalContext">
+        <owl:inverseOf rdf:resource="Context#globalContextIsComposeOfContext"/>
+        <rdfs:range rdf:resource="Context#GlobalContext"/>
+        <rdfs:domain rdf:resource="Context#Context"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#globalContextIsComposeOfEnvironnementalContext -->
+
+    <owl:ObjectProperty rdf:about="Context#globalContextIsComposeOfEnvironnementalContext">
+        <rdfs:subPropertyOf rdf:resource="Context#globalContextIsComposeOfContext"/>
+        <rdfs:range rdf:resource="Context#EnvironnementalContext"/>
+    </owl:ObjectProperty>
+    
+
+
+
+    <!-- Context#globalContextIsComposeOfSocialContext -->
+
+    <owl:ObjectProperty rdf:about="Context#globalContextIsComposeOfSocialContext">
+        <rdfs:subPropertyOf rdf:resource="Context#globalContextIsComposeOfContext"/>
+        <rdfs:range rdf:resource="Context#SocialContext"/>
+    </owl:ObjectProperty>
+
+  
+    <!-- Context#locationHasLocationContextMeaning -->
+
+    <owl:ObjectProperty rdf:about="Context#locationHasLocationContextMeaning">
+        <rdfs:subPropertyOf rdf:resource="Context#entityHasContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#Location"/>
+        <rdfs:range rdf:resource="common_ground#LocationContextMeaning"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#locationSupportActivity -->
+
+    <owl:ObjectProperty rdf:about="Context#locationSupportActivity">
+        
+        <rdfs:domain rdf:resource="common_ground#Location"/>
+        <rdfs:range rdf:resource="common_ground#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#locationsupportEnvironnementLocation -->
+
+    <owl:ObjectProperty rdf:about="Context#locationsupportEnvironnementLocation">
+        <owl:inverseOf rdf:resource = "Context#environnementContextTakePlaceInLocation"/>
+        <rdfs:domain rdf:resource="common_ground#Location"/>
+        <rdfs:range rdf:resource="Context#EnvironnementalContext"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#objectHasObjectContextMeaning -->
+
+    <owl:ObjectProperty rdf:about="Context#objectHasObjectContextMeaning">
+        <rdfs:subPropertyOf rdf:resource="Context#entityHasContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#Object"/>
+        <rdfs:range rdf:resource="common_ground#ObjectContextMeaning"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#roleHasRoleContextMeaning -->
+
+    <owl:ObjectProperty rdf:about="Context#roleHasRoleContextMeaning">
+        <rdfs:subPropertyOf rdf:resource="Context#entityHasContextMeaning"/>
+        <rdfs:domain rdf:resource="common_ground#Role"/>
+        <rdfs:range rdf:resource="common_ground#RoleContextMeaning"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#rolePlayedByAgent -->
+
+    <owl:ObjectProperty rdf:about="Context#rolePlayedByAgent">
+        
+        <rdfs:domain rdf:resource="common_ground#Role"/>
+        <rdfs:range rdf:resource="common_ground#Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#socialContextHasRole -->
+
+    <owl:ObjectProperty rdf:about="Context#socialContextHasRole">
+        <owl:inverseOf rdf:resource="Context#RoleperformInSocialContext"/>
+        <rdfs:domain rdf:resource="Context#SocialContext"/>
+        <rdfs:range rdf:resource="common_ground#Role"/>
+    </owl:ObjectProperty>
+
+    <!-- Context#RoleperformInSocialContext -->
+
+    <owl:ObjectProperty rdf:about="Context#RoleperformInSocialContext">
+        <owl:inverseOf rdf:resource="Context#socialContextHasRole"/>
+        <rdfs:range rdf:resource="Context#SocialContext"/>
+        <rdfs:domain rdf:resource="common_ground#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#socialContextHasSocialRules -->
+
+    <owl:ObjectProperty rdf:about="Context#socialContextHasSocialRules">
+        <rdfs:domain rdf:resource="Context#SocialContext"/>
+        <rdfs:range rdf:resource="Context#SocialRules"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- Context#useAsSymbolInContextMeaning -->
+
+    <owl:ObjectProperty rdf:about="Context#useAsSymbolInContextMeaning">
+        
+    </owl:ObjectProperty>
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- Context#isFinish -->
+
+    <owl:DatatypeProperty rdf:about="Context#isFinish">
+        <rdfs:domain rdf:resource="Context#GlobalContext"/>
+        <!-- <rdfs:domain rdf:resource=""/> -->
+    </owl:DatatypeProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- Context#ActivityContext -->
+
+    <owl:Class rdf:about="Context#ActivityContext">
+        <rdfs:subClassOf rdf:resource="Context#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- Context#Context -->
+
+    <owl:Class rdf:about="Context#Context"/>
+    
+
+
+    <!-- Context#EnvironnementalContext -->
+
+    <owl:Class rdf:about="Context#EnvironnementalContext">
+        <rdfs:subClassOf rdf:resource="Context#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- Context#GlobalContext -->
+
+    <owl:Class rdf:about="Context#GlobalContext">
+        <rdfs:subClassOf rdf:resource="Context#Context"/>
+        <isFinish rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isFinish>
+    </owl:Class>
+    
+
+
+    <!-- Context#SocialContext -->
+
+    <owl:Class rdf:about="Context#SocialContext">
+        <rdfs:subClassOf rdf:resource="Context#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- Context#SocialRules -->
+
+    <owl:Class rdf:about="Context#SocialRules"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- Context#bob -->
+
+    <owl:NamedIndividual rdf:about="Context#bob">
+        <rdf:type rdf:resource="common_ground#Human"/>
+        <agentPlayRole rdf:resource="Context#teacher"/>
+        <agentPlayRole rdf:resource="Context#wizard"/>
+        <common_ground:isInRoom rdf:resource="Context#classroom"/>
+        <common_ground:isInArea rdf:resource="Context#scene"/>
+        <common_ground:agentCurrentContext rdf:resource="Context#classroomGlobalContext"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#alice -->
+    <owl:NamedIndividual rdf:about="Context#alice">
+        <rdf:type rdf:resource="common_ground#Human"/>
+        <agentPlayRole rdf:resource="Context#wizard"/>
+        <common_ground:isInRoom rdf:resource="Context#classroom"/>
+        <common_ground:isInArea rdf:resource="Context#scene"/>
+        <common_ground:agentCurrentContext rdf:resource="Context#classroomGlobalContext"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#classroom -->
+
+    <owl:NamedIndividual rdf:about="Context#classroom">
+        <rdf:type rdf:resource="common_ground#Room"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#classroomEnvironnementContext -->
+
+    <owl:NamedIndividual rdf:about="Context#classroomEnvironnementContext">
+        <rdf:type rdf:resource="Context#EnvironnementalContext"/>
+        <environnementContextInvolveObjects rdf:resource="Context#pen"/>
+        <environnementContextTakePlaceInLocation rdf:resource="Context#classroom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#classroomGlobalContext -->
+
+    <owl:NamedIndividual rdf:about="Context#classroomGlobalContext">
+        <rdf:type rdf:resource="Context#GlobalContext"/>
+        <globalContextIsComposeOfEnvironnementalContext rdf:resource="Context#classroomEnvironnementContext"/>
+        <globalContextIsComposeOfSocialContext rdf:resource="Context#classroomSocialContext"/>
+        <globalContextIsComposeOfActivityContext rdf:resource="Context#classroomActivityContext"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#classroomActivityContext -->
+
+    <owl:NamedIndividual rdf:about="Context#classroomActivityContext">
+        <rdf:type rdf:resource="Context#ActivityContext"/>
+        <activityContextHasActivity rdf:resource="Context#teach"/>
+        <activityContextHasActivity rdf:resource="Context#study"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#teach -->
+
+    <owl:NamedIndividual rdf:about="Context#teach">
+        <rdf:type rdf:resource="common_ground#Activity"/>
+        <activityIsPerformInLocation rdf:resource="Context#classroom"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#study -->
+
+    <owl:NamedIndividual rdf:about="Context#study">
+        <rdf:type rdf:resource="common_ground#Activity"/>
+        <activityIsPerformInLocation rdf:resource="Context#classroom"/>
+    </owl:NamedIndividual>
+
+
+    <!-- Context#classroomSocialContext -->
+
+    <owl:NamedIndividual rdf:about="Context#classroomSocialContext">
+        <rdf:type rdf:resource="Context#SocialContext"/>
+        <socialContextHasRole rdf:resource="Context#teacher"/>
+        <socialContextHasRole rdf:resource="Context#student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#magicWand -->
+
+    <owl:NamedIndividual rdf:about="Context#magicWand">
+        <rdf:type rdf:resource="common_ground#Pickable"/>
+        <useAsSymbolInContextMeaning rdf:resource="Context#penTheaterMeaning"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#pen -->
+
+    <owl:NamedIndividual rdf:about="Context#pen">
+        <rdf:type rdf:resource="common_ground#Pickable"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#penTheaterMeaning -->
+
+    <owl:NamedIndividual rdf:about="Context#penTheaterMeaning">
+        <rdf:type rdf:resource="common_ground#ObjectContextMeaning"/>
+        <contextMeaningHasObject rdf:resource="Context#pen"/>
+        <contextMeaningIsBasedOnThisContext rdf:resource="Context#theatreGlobalContext"/>
+        <contextMeaningSymboliseObject rdf:resource="Context#magicWand"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#pr2 -->
+
+    <owl:NamedIndividual rdf:about="Context#pr2">
+        <rdf:type rdf:resource="common_ground#Robot"/>
+        <common_ground:isInRoom rdf:resource="Context#laboratory"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#scene -->
+
+    <owl:NamedIndividual rdf:about="Context#scene">
+        <rdf:type rdf:resource="common_ground#Area"/>
+        <common_ground:isInRoom rdf:resource="Context#classroom"/>
+    
+    </owl:NamedIndividual>
+
+    <!-- Context#laboratory -->
+
+    <owl:NamedIndividual rdf:about="Context#laboratory">
+        <rdf:type rdf:resource="common_ground#Area"/>
+
+    </owl:NamedIndividual>
+
+        <!-- Context#appartement -->
+
+    <owl:NamedIndividual rdf:about="Context#appartement">
+        <rdf:type rdf:resource="common_ground#Room"/>
+        <common_ground:isInArea rdf:resource="Context#laboratory"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#teacher -->
+
+    <owl:NamedIndividual rdf:about="Context#teacher">
+        <rdf:type rdf:resource="common_ground#Role"/>
+    </owl:NamedIndividual>
+    
+    <!-- Context#student -->
+
+    <owl:NamedIndividual rdf:about="Context#student">
+        <rdf:type rdf:resource="common_ground#Role"/>
+    </owl:NamedIndividual>
+
+
+    <!-- Context#theatreEnvironnementContext -->
+
+    <owl:NamedIndividual rdf:about="Context#theatreEnvironnementContext">
+        <rdf:type rdf:resource="Context#EnvironnementalContext"/>
+        <environnementContextInvolveObjects rdf:resource="Context#pen"/>
+        <environnementContextTakePlaceInLocation rdf:resource="Context#scene"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#theatreGlobalContext -->
+
+    <owl:NamedIndividual rdf:about="Context#theatreGlobalContext">
+        <rdf:type rdf:resource="Context#GlobalContext"/>
+        <globalContextIsComposeOfEnvironnementalContext rdf:resource="Context#theatreEnvironnementContext"/>
+        <globalContextIsComposeOfSocialContext rdf:resource="Context#theatreSocialContext"/>
+        <globalContextIsComposeOfActivityContext rdf:resource="Context#theatreActivityContext"/>
+        <!-- <isFinish rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isFinish> -->
+    </owl:NamedIndividual>
+    
+
+
+    <!-- Context#theatreSocialContext -->
+
+    <owl:NamedIndividual rdf:about="Context#theatreSocialContext">
+        <rdf:type rdf:resource="Context#SocialContext"/>
+        <socialContextHasRole rdf:resource="Context#wizard"/>
+    </owl:NamedIndividual>
+
+
+    
+    <!-- Context#theatreActivityContext -->
+
+    <owl:NamedIndividual rdf:about="Context#theatreActivityContext">
+        <rdf:type rdf:resource="Context#ActivityContext"/>
+        <activityContextHasActivity rdf:resource="Context#playTheatre"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#playTheatre -->
+
+    <owl:NamedIndividual rdf:about="Context#playTheatre">
+        <rdf:type rdf:resource="common_ground#Activity"/>
+        <activityIsPerformInLocation rdf:resource="Context#scene"/>
+        <activityUseAgent rdf:resource="Context#bob"/> 
+        <activityUseAgent rdf:resource="Context#alice"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#wizard -->
+
+    <owl:NamedIndividual rdf:about="Context#wizard">
+        <rdf:type rdf:resource="common_ground#Role"/>
+    </owl:NamedIndividual>
+
+    <!-- Context#wizard -->
+
+    <owl:NamedIndividual rdf:about="Context#wizard">
+        <rdf:type rdf:resource="common_ground#Role"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

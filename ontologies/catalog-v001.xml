@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="https://github.com/RIS-WITH/exp_director_task/blob/master/dt_resources/ontologies/common_ground" uri="file:/D:/catkin_ws/src/exp_director_task/dt_resources/ontologies/common_ground.owl"/>
+    <uri id="Imports Wizard Entry" name="https://github.com/RIS-WITH/exp_director_task/blob/master/dt_resources/ontologies/common_ground#" uri="file:/D:/catkin_ws/src/exp_director_task/dt_resources/ontologies/common_ground.owl"/>
+    <uri id="User Entered Import Resolution" name="file:/D:/catkin_ws/src/context-package/ontologies/common_ground" uri="file:/D:/catkin_ws/src/exp_director_task/dt_resources/ontologies/common_ground.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1657636083328" name="Context" uri="Context.owl"/>
+    </group>
+</catalog>
